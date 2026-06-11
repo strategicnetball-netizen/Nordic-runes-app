@@ -1,0 +1,44 @@
+/* Import Norse-themed fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700&family=UnifrakturMaguntia&display=swap');
+
+/* Root font variables */
+:root {
+  --font-norse-serif: 'Cormorant Garamond', 'Georgia', serif;
+  --font-norse-display: 'Cinzel', serif;
+}
+
+/* Global font application */
+body {
+  font-family: var(--font-norse-serif) !important;
+}
+
+/* All headings use display font */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-norse-display) !important;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+/* Buttons use display font */
+button {
+  font-family: var(--font-norse-display) !important;
+  letter-spacing: 0.03em;
+}
+
+/* Larger text elements use display font */
+.text-lg,
+.text-xl,
+.text-2xl,
+.text-3xl,
+.text-4xl,
+.text-5xl,
+.text-6xl,
+.text-7xl,
+.text-8xl {
+  font-family: var(--font-norse-display) !important;
+}
+
+/* Ensure all text inherits Norse fonts */
+* {
+  font-family: inherit;
+}
