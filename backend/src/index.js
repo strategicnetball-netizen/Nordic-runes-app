@@ -117,12 +117,14 @@ function generateRuneInterpretation(stones, contextData, contextKey, customQuest
     const yourQuestion = lang === 'vi' ? "Câu hỏi của bạn" : "Your Question"
     const theMessage = lang === 'vi' ? "Thông điệp" : "The Message"
     const guidance = lang === 'vi' ? "Hướng dẫn để tiến lên phía trước" : "Guidance to Move Forward"
+    const theRune = lang === 'vi' ? "Rune" : "The Rune"
+    const singleRuneTitle = lang === 'vi' ? "Bài Đọc Một Rune Của Bạn" : "Your Single Rune Reading"
     
     reading = `
-## ${lang === 'vi' ? "Bài Đọc Một Rune Của Bạn" : "Your Single Rune Reading"}
+## ${singleRuneTitle}
 
-**${lang === 'vi' ? "Rune" : "The Rune"}: ${stone.name} (${stone.symbol})**
-${stones[0].reversed ? "*(Reversed)*" : "*(Upright)*"}
+**${theRune}: ${stone.name} (${stone.symbol})**
+${stones[0].reversed ? (lang === 'vi' ? "*(Đảo ngược)*" : "*(Reversed)*") : (lang === 'vi' ? "*(Thẳng đứng)*" : "*(Upright)*")}
 
 **${yourQuestion}:** "${customQuestion || (lang === 'vi' ? 'Câu hỏi của bạn' : 'Your inquiry')}"
 
