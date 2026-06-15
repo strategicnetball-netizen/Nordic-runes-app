@@ -12,6 +12,7 @@ function DrawRunes({ onReadingComplete, onBack }) {
   const [useCustom, setUseCustom] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [contextsLoading, setContextsLoading] = useState(true)
 
   useEffect(() => {
     // Scroll to top when page loads (with small delay for rendering)
@@ -21,6 +22,7 @@ function DrawRunes({ onReadingComplete, onBack }) {
     
     const loadContexts = async () => {
       try {
+        setContextsLoading(true)
         const response = await getContexts()
         setContexts(response.data)
         const firstKey = Object.keys(response.data)[0]
@@ -28,6 +30,8 @@ function DrawRunes({ onReadingComplete, onBack }) {
       } catch (err) {
         setError(t('draw.errorFailed'))
         console.error(err)
+      } finally {
+        setContextsLoading(false)
       }
     }
     loadContexts()
@@ -98,7 +102,18 @@ function DrawRunes({ onReadingComplete, onBack }) {
           </div>
         )}
 
-        <div className="bg-slate-900 bg-opacity-80 rounded-lg p-8 space-y-8 backdrop-blur-sm border border-amber-900">
+        {contextsLoading ? (
+          <div className="bg-slate-900 bg-opacity-80 rounded-lg p-12 space-y-8 backdrop-blur-sm border border-amber-900 flex flex-col items-center justify-center min-h-96">
+            <div className="flex flex-col items-center gap-6">
+              <div className="animate-spin">
+                <div className="text-6xl text-amber-300">✦</div>
+              </div>
+              <p className="text-amber-200 text-lg font-semibold">{t('draw.drawing')}</p>
+              <p className="text-amber-300 text-sm">Connecting to the runes...</p>
+            </div>
+          </div>
+        ) : (
+          <div className="bg-slate-900 bg-opacity-80 rounded-lg p-8 space-y-8 backdrop-blur-sm border border-amber-900">
           {/* Toggle between predefined categories and custom question */}
           <div>
             <label className="block text-lg font-bold text-amber-100 mb-4">
@@ -235,7 +250,7 @@ function DrawRunes({ onReadingComplete, onBack }) {
           <div className="bg-slate-800 bg-opacity-80 rounded-lg p-4 text-amber-200 text-sm border border-amber-900">
             <p>{t('draw.instruction')}</p>
           </div>
-        </div>
+        )}
       </div>
     </div>
   )
