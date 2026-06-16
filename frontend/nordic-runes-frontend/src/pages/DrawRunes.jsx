@@ -114,7 +114,7 @@ function DrawRunes({ onReadingComplete, onBack }) {
           </div>
         ) : (
           <div className="bg-slate-900 bg-opacity-80 rounded-lg p-8 space-y-8 backdrop-blur-sm border border-amber-900">
-          {/* Toggle between predefined categories and custom question */}
+            {/* Toggle between predefined categories and custom question */}
           <div>
             <label className="block text-lg font-bold text-amber-100 mb-4">
               {t('draw.frameQuestion')}
@@ -249,6 +249,7 @@ function DrawRunes({ onReadingComplete, onBack }) {
           {/* Instructions */}
           <div className="bg-slate-800 bg-opacity-80 rounded-lg p-4 text-amber-200 text-sm border border-amber-900">
             <p>{t('draw.instruction')}</p>
+          </div>
           </div>
         )}
       </div>
