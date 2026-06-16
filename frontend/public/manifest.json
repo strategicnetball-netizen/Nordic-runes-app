@@ -1,0 +1,22 @@
+{
+  "name": "Nordic Runes - Divination App",
+  "short_name": "Nordic Runes",
+  "description": "Discover ancient wisdom through Nordic runes. Draw runes and receive personalized guidance based on Elder Futhark traditions. Available in English and Vietnamese.",
+  "id": "com.nordicrunes.app",
+  "start_url": "https://nordic-runes.vercel.app/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "scope": "/",
+  "theme_color": "#d4af6a",
+  "background_color": "#0a0a14",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><rect fill='%230a0a14' width='512' height='512'/><text x='256' y='320' font-size='200' font-weight='bold' text-anchor='middle' fill='%23d4af6a' font-family='serif'>✦</text></svg>",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "categories": ["lifestyle", "entertainment"],
+  "screenshots": []
+}
