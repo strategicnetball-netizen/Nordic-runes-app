@@ -3,7 +3,7 @@
   "short_name": "Nordic Runes",
   "description": "Discover ancient wisdom through Nordic runes. Draw runes and receive personalized guidance based on Elder Futhark traditions. Available in English and Vietnamese.",
   "id": "com.nordicrunes.app",
-  "start_url": "https://nordic-runes.vercel.app/",
+  "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
   "scope": "/",
