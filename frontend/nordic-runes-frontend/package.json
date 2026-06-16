@@ -4,14 +4,8 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "expo start",
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "build": "eas build",
-    "build:android": "eas build --platform android",
-    "build:ios": "eas build --platform ios",
+    "dev": "vite",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
