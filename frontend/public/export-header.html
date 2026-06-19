@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Header Image</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #1a1a1a; font-family: Arial, sans-serif; }
+        canvas { border: 2px solid #d4af6a; display: block; margin: 20px 0; }
+        button { padding: 10px 20px; font-size: 16px; background: #d4af6a; border: none; cursor: pointer; }
+        p { color: #d4af6a; }
+    </style>
+</head>
+<body>
+    <h1 style="color: #d4af6a;">Nordic Runes Header Image Exporter</h1>
+    <p>Click the button below to download your header image as PNG (1024x500)</p>
+    <button onclick="downloadImage()">📥 Download Header Image (PNG)</button>
+    
+    <canvas id="canvas" width="1024" height="500"></canvas>
+    
+    <script>
+        function downloadImage() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Draw background
+            const gradient = ctx.createLinearGradient(0, 0, 1024, 500);
+            gradient.addColorStop(0, '#1a1a2e');
+            gradient.addColorStop(1, '#0a0a14');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 1024, 500);
+            
+            // Draw glow
+            const radialGradient = ctx.createRadialGradient(512, 250, 0, 512, 250, 120);
+            radialGradient.addColorStop(0, 'rgba(212, 175, 106, 0.3)');
+            radialGradient.addColorStop(1, 'rgba(212, 175, 106, 0)');
+            ctx.fillStyle = radialGradient;
+            ctx.fillRect(0, 0, 1024, 500);
+            
+            // Draw circle border
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(512, 250, 100, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Draw rune (Fehu)
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 6;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            // Main vertical line
+            ctx.beginPath();
+            ctx.moveTo(512, 190);
+            ctx.lineTo(512, 310);
+            ctx.stroke();
+            
+            // Upper left
+            ctx.beginPath();
+            ctx.moveTo(512, 220);
+            ctx.lineTo(482, 200);
+            ctx.stroke();
+            
+            // Upper right
+            ctx.beginPath();
+            ctx.moveTo(512, 220);
+            ctx.lineTo(542, 200);
+            ctx.stroke();
+            
+            // Lower left
+            ctx.beginPath();
+            ctx.moveTo(512, 280);
+            ctx.lineTo(482, 300);
+            ctx.stroke();
+            
+            // Lower right
+            ctx.beginPath();
+            ctx.moveTo(512, 280);
+            ctx.lineTo(542, 300);
+            ctx.stroke();
+            
+            // Draw title
+            ctx.font = 'bold 72px serif';
+            ctx.fillStyle = '#d4af6a';
+            ctx.textAlign = 'center';
+            ctx.letterSpacing = '4px';
+            ctx.fillText('NORDIC RUNES', 512, 420);
+            
+            // Draw subtitle
+            ctx.font = '24px sans-serif';
+            ctx.globalAlpha = 0.8;
+            ctx.fillText('Ancient Wisdom. Modern Guidance.', 512, 465);
+            ctx.globalAlpha = 1.0;
+            
+            // Draw corner details
+            ctx.globalAlpha = 0.3;
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.arc(80, 50, 20, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.arc(944, 50, 20, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Download
+            const link = document.createElement('a');
+            link.href = canvas.toDataURL('image/png');
+            link.download = 'nordic-runes-header-1024x500.png';
+            link.click();
+            
+            alert('Header image downloaded! Save it as "nordic-runes-header.png"');
+        }
+        
+        // Draw initial preview
+        downloadImage();
+    </script>
+</body>
+</html>

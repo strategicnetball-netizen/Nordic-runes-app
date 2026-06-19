@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Export Header Image - 4096x2304</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #1a1a1a; font-family: Arial, sans-serif; }
+        canvas { border: 2px solid #d4af6a; display: block; margin: 20px 0; max-width: 800px; }
+        button { padding: 10px 20px; font-size: 16px; background: #d4af6a; border: none; cursor: pointer; }
+        p { color: #d4af6a; }
+    </style>
+</head>
+<body>
+    <h1 style="color: #d4af6a;">Nordic Runes Header Image - 4096x2304</h1>
+    <p>Click the button below to download your header image as PNG</p>
+    <button onclick="downloadImage()">📥 Download Header Image (PNG 4096x2304)</button>
+    
+    <canvas id="canvas" width="4096" height="2304"></canvas>
+    
+    <script>
+        function downloadImage() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Draw background gradient
+            const gradient = ctx.createLinearGradient(0, 0, 4096, 2304);
+            gradient.addColorStop(0, '#1a1a2e');
+            gradient.addColorStop(1, '#0a0a14');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 4096, 2304);
+            
+            // Draw radial glow
+            const radialGradient = ctx.createRadialGradient(2048, 1152, 0, 2048, 1152, 500);
+            radialGradient.addColorStop(0, 'rgba(212, 175, 106, 0.25)');
+            radialGradient.addColorStop(1, 'rgba(212, 175, 106, 0)');
+            ctx.fillStyle = radialGradient;
+            ctx.fillRect(0, 0, 4096, 2304);
+            
+            // Draw circle border around rune
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 12;
+            ctx.globalAlpha = 0.8;
+            ctx.beginPath();
+            ctx.arc(2048, 1152, 400, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.globalAlpha = 1.0;
+            
+            // Draw rune (Elder Futhark - Fehu)
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 20;
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            
+            // Main vertical line
+            ctx.beginPath();
+            ctx.moveTo(2048, 800);
+            ctx.lineTo(2048, 1500);
+            ctx.stroke();
+            
+            // Upper left diagonal
+            ctx.beginPath();
+            ctx.moveTo(2048, 900);
+            ctx.lineTo(1880, 800);
+            ctx.stroke();
+            
+            // Upper right diagonal
+            ctx.beginPath();
+            ctx.moveTo(2048, 900);
+            ctx.lineTo(2216, 800);
+            ctx.stroke();
+            
+            // Lower left diagonal
+            ctx.beginPath();
+            ctx.moveTo(2048, 1300);
+            ctx.lineTo(1880, 1400);
+            ctx.stroke();
+            
+            // Lower right diagonal
+            ctx.beginPath();
+            ctx.moveTo(2048, 1300);
+            ctx.lineTo(2216, 1400);
+            ctx.stroke();
+            
+            // Draw title text
+            ctx.font = 'bold 280px serif';
+            ctx.fillStyle = '#d4af6a';
+            ctx.textAlign = 'center';
+            ctx.fillText('NORDIC RUNES', 2048, 1850);
+            
+            // Draw subtitle
+            ctx.font = '80px sans-serif';
+            ctx.globalAlpha = 0.85;
+            ctx.fillText('Ancient Wisdom. Modern Guidance.', 2048, 2020);
+            ctx.globalAlpha = 1.0;
+            
+            // Draw corner decorative elements
+            ctx.globalAlpha = 0.3;
+            ctx.strokeStyle = '#d4af6a';
+            ctx.lineWidth = 8;
+            
+            // Top left corner circle
+            ctx.beginPath();
+            ctx.arc(300, 250, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Top right corner circle
+            ctx.beginPath();
+            ctx.arc(3796, 250, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Bottom left corner circle
+            ctx.beginPath();
+            ctx.arc(300, 2054, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // Bottom right corner circle
+            ctx.beginPath();
+            ctx.arc(3796, 2054, 80, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            ctx.globalAlpha = 1.0;
+            
+            // Download as JPG for smaller file size
+            canvas.toBlob(function(blob) {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = 'nordic-runes-header-4096x2304.jpg';
+                link.click();
+                alert('Header image downloaded as JPG!\n\nFile size should be under 2MB.\nFilename: nordic-runes-header-4096x2304.jpg');
+            }, 'image/jpeg', 0.85);
+
+        }
+        
+        // Trigger download on page load
+        window.addEventListener('load', function() {
+            console.log('Canvas ready. Click the button to download.');
+        });
+    </script>
+</body>
+</html>
